@@ -1,1 +1,44 @@
-<h1>about me</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style> 
+  body {
+    font-family: helvetica neue, Helvetica, sans-serif;
+    background: #f5f3ef;
+    color: #222;
+    padding: 50px;
+  }
+
+  .moving-image {
+    display: circular;
+    max-width: 300px;
+    height: auto;
+    animation: travel-across-screen 10s linear infinite alternate;
+  }
+
+  @keyframes travel-across-screen {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(max(0px, calc(100vw - 400px)));
+    }
+  }
+</style>
+<a style="color: #282a28; text-decoration: none;" href="index.html" class="home-button">Home</a> center
+
+
+<h1>ABOUT ME: <center>Taneli Major</center></h1>
+<a href="about.html" style="color: #282a28; text-decoration: underline;">About Me</a>
+<p style="color: blanchedalmond; font-size: 46px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Hi, my name is Taneli Major. I am a graphic designer and design student at the University of Georgia. I have a passion for creating visually compelling designs that communicate effectively and leave a lasting impression. My work spans various design disciplines, including branding, packaging, digital design.</p>
+<img class="moving-image" src="assets/IMG_8698.jpg" alt="Image of Taneli Major" width="300" height="400" style="border-radius: 50%;" border="5px solid #222a28;">
+
+</body>
+</html>
+
+
+

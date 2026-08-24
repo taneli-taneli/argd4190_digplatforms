@@ -7,21 +7,32 @@
 
   <style>
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      box-sizing: border-circular;
+      margin: 10px;
+      padding: 15px;
+    }
+
+    a:hover {
+      color: #066a52;
+      text-decoration: circle;
     }
 
     body {
-      font-family: helvetica neue, Helvetica, sans-serif;
-      background: #f5f3ef;
-      color: #222;
+      font-family: helvetica-neue, Helvetica, sans-serif;
+      background: #b1dba5;
+      color: #fffefe;
       padding: 50px;
+      text-transform: uppercase;
+      .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+}
+
     }
 
     h1 {
       text-align: center;
-      font-size: 42px;
+      font-size: 40px;
       margin-bottom: 10px;
     }
 
@@ -44,9 +55,9 @@
       background: #222;
       color: white;
       text-align: center;
-      border-radius: 12px;
+      border-radius: 18px;
       font-size: 22px;
-      font-weight: bold;
+      font-weight: bold-italic;
       position: relative;
     }
 
@@ -135,7 +146,7 @@
       }
 
       h1 {
-        font-size: 32px;
+        font-size: 38px;
       }
     }
   </style>
@@ -144,11 +155,13 @@
 <body>
 
   <h1>Portfolio Sitemap</h1>
-  <p class="subtitle">Taneli Major taneli.major@uga.edu</p>
-
+  <p class="subtitle">Taneli Major 
+    <a href="mailto:tmm34955@uga.edu">Email Me </a>
+    tmm34955@uga.edu</p>
   <div class="sitemap">
 
     <!-- HOME -->
+     
     <div class="home">
       HOME
     </div>
@@ -201,7 +214,7 @@
           <li>Branding</li>
           <li>Print Design</li>
           <li>Packaging</li>
-          <li>Art Direction</li>
+          <li>Outside of Design</li>
           <li>Digital Design</li>
         </ul>
       </div>
@@ -213,12 +226,12 @@
           <li>Email</li>
           <li>Instagram</li>
           <li>
-  <a href="hhttps://www.linkedin.com/in/taneli-major/" target="_blank">
+  <a href="https://www.linkedin.com/in/taneli-major-ab483925a/" target="_blank">
     LinkedIn
   </a>
 </li>
           <li>Adobe portfolio</li>
-          <li>Resume Download</li>
+          <li>Resume</li>
         </ul>
       </div>
 
@@ -226,8 +239,8 @@
 
     <!-- DESCRIPTION -->
     <div class="description">
-      <h2>Website Flow</h2>
-      <p>
+      <h2>Website Description  </h2>
+      <p style="font-size: 20px; color: #232323;">
         My portfolio website can be used to navigate my different scopes of work. Hopefully with more time I can develop the different catergories and add 
         effects that make transitions from the homepage to different hyperlinks more effecient.
       </p>

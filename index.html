@@ -1,67 +1,145 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Taneli's Portfolio — Sitemap</title>
 
   <style>
+
+    /* =========================
+       GLOBAL STYLES
+    ========================= */
+
     * {
-      box-sizing: border-circular;
-      margin: 10px;
-      padding: 15px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Helvetica", Arial, sans-serif;
+      background: #b1dba5;
+      color: #fffefe;
+      padding: 50px;
+    }
+
+    /* =========================
+       TYPOGRAPHY
+       FONT STYLE GUIDE
+    ========================= */
+
+    /* Title — 60px Helvetica Bold */
+    .title {
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+    }
+
+    /* Heading 1 — 40px Helvetica */
+    h1 {
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 40px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* Heading 2 — 32px Helvetica Neue */
+    h2 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    /* Heading 3 — 28px Helvetica Italic */
+    h3 {
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 28px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* Body — 20px Helvetica Thin */
+    p,
+    li {
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    /* =========================
+       LINKS
+    ========================= */
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     a:hover {
       color: #066a52;
-      text-decoration: circle;
+      text-decoration: underline;
     }
 
-    body {
-      font-family: helvetica-neue, Helvetica, sans-serif;
-      background: #b1dba5;
-      color: #fffefe;
-      padding: 50px;
-      text-transform: uppercase;
-      .ease-out {
-    --tw-ease: var(--ease-out);
-    transition-timing-function: var(--ease-out);
-}
+    /* =========================
+       TEXT SELECTION
+    ========================= */
 
+    p::selection {
+      color: pink;
+      background-color: green;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+    /* =========================
+       HEADER
+    ========================= */
 
     .subtitle {
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 300;
       text-align: center;
       color: #777;
       margin-bottom: 50px;
     }
+
+    /* =========================
+       SITEMAP
+    ========================= */
 
     .sitemap {
       max-width: 1200px;
       margin: auto;
     }
 
-    /* Main Home Page */
+    /* =========================
+       HOME
+    ========================= */
+
     .home {
-      width: 260px;
-      margin: 0 auto 60px;
+      width: 270px;
+      margin: 10px auto 60px;
       padding: 25px;
-      background: #222;
+      background: #473131;
       color: white;
       text-align: center;
       border-radius: 18px;
-      font-size: 22px;
-      font-weight: bold-italic;
+
+      /* H2-style typography */
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+
       position: relative;
     }
 
     /* Vertical line from Home */
+
     .home::after {
       content: "";
       position: absolute;
@@ -72,13 +150,18 @@
       left: 50%;
     }
 
-    /* Main Navigation */
+    /* =========================
+       MAIN NAVIGATION
+    ========================= */
+
     .main-nav {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 20px;
       position: relative;
     }
+
+    /* Horizontal line */
 
     .main-nav::before {
       content: "";
@@ -90,6 +173,10 @@
       right: 10%;
     }
 
+    /* =========================
+       SECTIONS
+    ========================= */
+
     .section {
       background: white;
       border: 2px solid #222;
@@ -97,12 +184,19 @@
       padding: 20px;
       min-height: 180px;
       position: relative;
+      color: #222;
     }
 
+    /* Section headings — H2 */
+
     .section h2 {
-      font-size: 20px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
       margin-bottom: 15px;
     }
+
+    /* Section list */
 
     .section ul {
       list-style: none;
@@ -111,12 +205,22 @@
     .section li {
       padding: 7px 0;
       color: #555;
+
+      /* Body typography */
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+
       border-bottom: 1px solid #eee;
     }
 
     .section li:last-child {
       border-bottom: none;
     }
+
+    /* =========================
+       DESCRIPTION
+    ========================= */
 
     .description {
       margin-top: 60px;
@@ -127,16 +231,35 @@
     }
 
     .description h2 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
       margin-bottom: 15px;
     }
 
+    .description p {
+      font-family: "Helvetica", Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #e29a9a;
+      opacity: 0.9;
+      line-height: 1.2;
+    }
+
+    /* =========================
+       RESPONSIVE DESIGN
+    ========================= */
+
     @media (max-width: 900px) {
+
       .main-nav {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
+
       body {
         padding: 25px;
       }
@@ -146,107 +269,171 @@
       }
 
       h1 {
-        font-size: 38px;
+        font-size: 40px;
       }
+
+      .title {
+        font-size: 60px;
+      }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <h1>Portfolio Sitemap</h1>
-  <p class="subtitle">Taneli Major 
-    <a href="mailto:tmm34955@uga.edu">Email Me </a>
-    tmm34955@uga.edu</p>
+  <!-- PAGE TITLE -->
+
+  <h1 class="title">Portfolio Sitemap</h1>
+
+  <p class="subtitle">
+    Taneli Major
+    <a href="mailto:tmm34955@uga.edu">Email Me</a>
+    tmm34955@uga.edu
+  </p>
+
+
   <div class="sitemap">
 
     <!-- HOME -->
-     
+
     <div class="home">
       HOME
     </div>
 
+
     <!-- MAIN NAVIGATION -->
+
     <div class="main-nav">
 
+
       <!-- WORK -->
+
       <div class="section">
-        <h2>01  Work</h2>
+
+        <h2>01 Work</h2>
+
         <ul>
+
           <li>Brand Identity</li>
           <li>Packaging Design</li>
           <li>Graphic Systems</li>
           <li>Environmental Design</li>
           <li>Illustration</li>
           <li>Digital Design</li>
+
         </ul>
+
       </div>
 
+
       <!-- ABOUT -->
+
       <div class="section">
-        <h2>02  About</h2>
+
+        <h2>02 About</h2>
+
         <ul>
+
           <li>
-  <a href="about.html">About Me</a></li>
-          <li>Design experience</li>
+            <a href="about.html">About Me</a>
+          </li>
+
+          <li>Design Experience</li>
           <li>Experience</li>
           <li>Education</li>
           <li>Resume</li>
+
         </ul>
+
       </div>
 
+
       <!-- PROJECTS -->
+
       <div class="section">
-        <h2>03  Projects</h2>
+
+        <h2>03 Projects</h2>
+
         <ul>
+
           <li>Freelance Projects</li>
           <li>Case Studies</li>
           <li>Client Work</li>
           <li>Student Work</li>
           <li>Personal Projects</li>
+
         </ul>
+
       </div>
 
+
       <!-- SERVICES -->
+
       <div class="section">
-        <h2>04  Services</h2>
+
+        <h2>04 Services</h2>
+
         <ul>
+
           <li>Branding</li>
           <li>Print Design</li>
           <li>Packaging</li>
           <li>Outside of Design</li>
           <li>Digital Design</li>
+
         </ul>
+
       </div>
 
+
       <!-- CONTACT -->
+
       <div class="section">
+
         <h2>05 — Contact</h2>
+
         <ul>
+
           <li>Email</li>
+
           <li>Instagram</li>
+
           <li>
-  <a href="https://www.linkedin.com/in/taneli-major-ab483925a/" target="_blank">
-    LinkedIn
-  </a>
-</li>
-          <li>Adobe portfolio</li>
+            <a 
+              href="https://www.linkedin.com/in/taneli-major-ab483925a/" 
+              target="_blank">
+              LinkedIn
+            </a>
+          </li>
+
+          <li>Adobe Portfolio</li>
           <li>Resume</li>
+
         </ul>
+
       </div>
 
     </div>
 
+
     <!-- DESCRIPTION -->
+
     <div class="description">
-      <h2>Website Description  </h2>
-      <p style="font-size: 20px; color: #232323;">
-        My portfolio website can be used to navigate my different scopes of work. Hopefully with more time I can develop the different catergories and add 
-        effects that make transitions from the homepage to different hyperlinks more effecient.
+
+      <h2></h2>
+
+      <p>
+        My portfolio website can be used to navigate my different scopes of work. Hopefully with more time I can develop the different categories and add effects that make transitions from the homepage to different hyperlinks more efficient.
       </p>
+
     </div>
 
   </div>
 
 </body>
+
 </html>

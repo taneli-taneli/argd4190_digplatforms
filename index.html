@@ -31,6 +31,7 @@
       background: #b1dba5;
       color: #fffefe;
       padding: 50px;
+      overflow-x: hidden;
     }
 
     /* =========================
@@ -137,7 +138,7 @@
     ========================= */
 
     .portfolio {
-      width: 150px;
+      width: max-content;
       margin: 10px auto 60px;
       padding: 25px;
       background: #95ca9b;
@@ -150,7 +151,23 @@
       font-size: 150px;
       font-weight: 400;
 
-      position: center;
+      position: relative;
+      animation: portfolio-slide 10s linear infinite;
+    }
+
+    @keyframes portfolio-slide {
+      from {
+        transform: translateX(-100vw);
+      }
+      to {
+        transform: translateX(100vw);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .portfolio {
+        animation: none;
+      }
     }
 
 

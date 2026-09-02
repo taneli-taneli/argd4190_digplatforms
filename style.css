@@ -2,3 +2,39 @@ p::selection {
   color: pink;
   background-color: green;
 }
+.main-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+@media screen and (max-width: 768px) {
+  .main-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.main-nav h1 {
+  font-size: var(--font-size-h1);
+  text-align: center;
+}
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+    }
+    .container {
+        justify-content: center;
+        gap:1rem;
+        justify-items: center;
+        min-height: 100vh;
+        display: grid;
+        grid-auto-columns: repeat(3fr,1fr);
+column-gap: 2rem;
+row-gap: 2rem;
+/* 1fr = 1 fraction of the available space */
+    }   
+sectiony {
+  background-color: #251010;
+  margin: 70px 0;
+    padding: 500px 0;
+}
+  

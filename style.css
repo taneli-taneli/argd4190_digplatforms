@@ -793,3 +793,7 @@ li {
   --font-display: "pressato-variable", sans-serif;
   --font-body: Helvetica, Arial, sans-serif;
 }
+::selection {
+  background-color: #e0aabd; /* Changes the background color */
+  color: #dddb89;            /* Changes the text color */
+}

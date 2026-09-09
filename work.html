@@ -22,39 +22,39 @@
 
   <section class="work-carousel" aria-label="Selected work">
     <div class="carousel-track">
-      <figure class="carousel-slide">
-        <img src="assets/IMG_3672.jpg" alt="Selected work by Taneli Major">
+      <figure class="carousel-slide" data-work="good-days">
+        <img src="assets/IMG_3672.jpg" alt="a Womans hand holding a Bia wine bottle with a blue background">
       </figure>
-      <figure class="carousel-slide">
+      <figure class="carousel-slide" data-work="paperbag">
         <video src="assets/Comp 4.mp4" aria-label="Selected work by Taneli Major" autoplay muted loop playsinline></video>
       </figure>
-      <figure class="carousel-slide">
-        <img src="assets/0B8E183A-F661-40AB-9E9C-409134D67433.JPG" alt="Selected work by Taneli Major">
+      <figure class="carousel-slide" data-work="ladybug">
+        <img src="assets/0B8E183A-F661-40AB-9E9C-409134D67433.JPG" alt="the Ladybug Camp logo including a ladybug on a leaf">
       </figure>
-      <figure class="carousel-slide">
-        <video src="assets/Pattern_TaneliMajor.mp4" aria-label="Selected work by Taneli Major" autoplay muted loop playsinline></video>
+      <figure class="carousel-slide" data-work="gafi">
+        <video src="assets/Pattern_TaneliMajor.mp4" aria-label="a repeating pattern video of bunnies running the pattern multiples" autoplay muted loop playsinline></video>
       </figure>
-      <figure class="carousel-slide">
-          <img src="assets/IMG_2745.JPG" alt="Good Days project image 1">
+      <figure class="carousel-slide" data-work="good-days">
+          <img src="assets/IMG_2745.JPG" alt="poster image displaying origami hair pieces with GAFI text">
       </figure>
       <div aria-hidden="true" class="carousel-duplicate">
-        <figure class="carousel-slide">
-          <img src="assets/LadybugCamp Designs-07.jpg" alt="">
+        <figure class="carousel-slide" data-work="ladybug">
+          <img src="assets/LadybugCamp Designs-07.jpg" alt="The ladybug camp logo including a ladybug holding hiking gear">
         </figure>
-        <figure class="carousel-slide">
-          <img src="assets/LadybugCamp Designs-06.jpg" alt="Selected work by Taneli Major" autoplay muted loop playsinline>
+        <figure class="carousel-slide" data-work="ladybug">
+          <img src="assets/LadybugCamp Designs-06.jpg" alt="the Ladybug camp logo including a ladybug showly hiking up a mountain" autoplay muted loop playsinline>
         </figure>
-        <figure class="carousel-slide">
-          <img src="assets/LadybugCamp Designs-05.jpg" alt="Selected work by Taneli Major">
+        <figure class="carousel-slide" data-work="ladybug">
+          <img src="assets/LadybugCamp Designs-05.jpg" alt="the Ladybug camp logo including a ladybug on a leaf">
         </figure>
-        <figure class="carousel-slide">
-          <img src="assets/IMG_7089.JPG" alt="Selected work by Taneli Major">
+        <figure class="carousel-slide" data-work="gafi">
+          <img src="assets/IMG_7089.JPG" alt="image of a girl back facing showcasing her hair with large origami hair pieces">
         </figure>
-        <figure class="carousel-slide">
+        <figure class="carousel-slide" data-work="good-days">
           <div class="good-days-gallery" aria-hidden="true">
-            <img src="assets/Good Days-Adjusted Labels 2.7_Sea Breeze 2.jpg" alt="">
-            <img src="assets/Good Days-Adjusted Labels 2.7_Gim Gimlet 1.jpg" alt="">
-            <img src="assets/Good Days-Adjusted Labels 2.7_Vodka RIta 2.jpg" alt="">
+            <img src="assets/Good Days-Adjusted Labels 2.7_Sea Breeze 2.jpg" alt="good days coktail flat can design, lots of small nutrition information">
+            <img src="assets/Good Days-Adjusted Labels 2.7_Gim Gimlet 1.jpg" alt="good days cocktail flat can design, lots of small nutrition information">
+            <img src="assets/Good Days-Adjusted Labels 2.7_Vodka RIta 2.jpg" alt="good days cocktail flat can design, lots of small nutrition information">
           </div>
         </figure>
       </div>
@@ -65,21 +65,20 @@
     <div class="projects" aria-labelledby="work-heading">
       <p class="column-title" id="work-heading">WORK</p>
       <!-- Add new project links here. Add the matching year in .years below. -->
-        <a href="#" class="project">
+        <a href="#" class="project" data-work="good-days">
             <span class="project-name">Good Days Cocktails</span>
             <span class="project-description"> | Graphic Design, Branding, Package Design
             </span>
         </a>
-        <a href="#" class="project">
+        <a href="#" class="project" data-work="paperbag">
             <span class="project-name">PaperBag</span>
             <span class="project-description">| Photography</span>
         </a>
-        <a href="#" class="project">
+        <a href="#" class="project" data-work="ladybug">
             <span class="project-name">Ladybug Camp</span>
             <span class="project-description">| Graphic Design, Screen Print, Print &amp; Production</span>
         </a>
-        </a>
-        <a href="#" class="project">
+        <a href="#" class="project" data-work="gafi">
             <span class="project-name">Gafi</span>
             <span class="project-description">| Magazine Design, Industrial Design</span>
         </a>
@@ -94,6 +93,21 @@
     </div>
   </main>
   <script>
+    const projectLinks = document.querySelectorAll('.project[data-work]');
+
+    projectLinks.forEach((projectLink) => {
+      const workName = projectLink.dataset.work;
+      const matchingSlides = document.querySelectorAll(`.carousel-slide[data-work="${workName}"]`);
+
+      const highlightSlides = () => matchingSlides.forEach((slide) => slide.classList.add('is-highlighted'));
+      const clearHighlight = () => matchingSlides.forEach((slide) => slide.classList.remove('is-highlighted'));
+
+      projectLink.addEventListener('mouseenter', highlightSlides);
+      projectLink.addEventListener('mouseleave', clearHighlight);
+      projectLink.addEventListener('focus', highlightSlides);
+      projectLink.addEventListener('blur', clearHighlight);
+    });
+
     document.querySelectorAll('.good-days-gallery').forEach((gallery) => {
       setInterval(() => {
         const nextPosition = gallery.scrollTop + gallery.clientHeight;

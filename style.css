@@ -144,6 +144,11 @@ a {
   height: 100%;
   padding: 0 8px;
   margin: 0;
+  transition: filter 0.25s ease;
+}
+
+.carousel-slide.is-highlighted {
+  filter: brightness(0.35);
 }
 
 .carousel-duplicate {
@@ -781,3 +786,10 @@ li {
         text-align: left !important;
     }
   }
+  :root {
+  --color-bg: #513927;
+  --color-text: #faec9d;
+  --color-accent: rgb(115, 168, 221);
+  --font-display: "pressato-variable", sans-serif;
+  --font-body: Helvetica, Arial, sans-serif;
+}

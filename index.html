@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="https://use.typekit.net/yux0hjt.css">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,10 +29,37 @@
 
     body {
       font-family: "Helvetica", Arial, sans-serif;
-      background: #b1dba5;
-      color: #fffefe;
+      background: rgb(81, 57, 39);
+      color: #faec9d;
       padding: 50px;
       overflow-x: hidden;
+    }
+
+    .cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #faec9d;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width 160ms ease, height 160ms ease;
+    }
+
+    @media (pointer: coarse) {
+      .cursor-dot {
+        display: none;
+      }
+    }
+
+    @media (pointer: fine) {
+      body,
+      body * {
+        cursor: none;
+      }
     }
 
     /* =========================
@@ -44,10 +72,11 @@
       font-family: "helvetica neue", "helvetica", Arial, sans-serif;
       font-size: 60px;
       font-weight: 700;
-      .container {
-        max-width: 1200px;
-        margin: auto;
-      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
     }
 
     /* Heading 1 — 40px Helvetica */
@@ -59,9 +88,10 @@
       margin-bottom: 10px;
     }
 
-    /* Heading 2 — 32px Helvetica Neue */
+    /* Heading 2 — 32px pressato-variable */
     h2 {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "pressato-variable", sans-serif;
+      font-variation-settings: 'wdth' 218, 'wght' 263, 'slnt' 120;
       font-size: 32px;
       font-weight: 400;
     }
@@ -92,7 +122,7 @@
     }
 
     a:hover {
-      color: #066a52;
+      color: #faec9d;
       text-decoration: underline;
     }
 
@@ -118,6 +148,30 @@
       margin-bottom: 50px;
     }
 
+    .top-left-nav {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 16px;
+      line-height: 1.1;
+    }
+
+    .top-left-nav a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .top-left-nav a:hover,
+    .top-left-nav a:focus-visible {
+      color: #faec9d;
+    }
+
     /* =========================
        SITEMAP
     ========================= */
@@ -138,36 +192,40 @@
     ========================= */
 
     .portfolio {
-      width: max-content;
-      margin: 10px auto 60px;
+      width: 100%;
+      margin: 80px auto 20px;
       padding: 25px;
-      background: #95ca9b;
-      color: white;
+      border: none;
+      color: #faec9d;
       text-align: center;
       border-radius: 60px;
 
-      /* H2-style typography */
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 150px;
-      font-weight: 400;
-
-      position: relative;
-      animation: portfolio-slide 10s linear infinite;
+      font-family: "pressato-variable", sans-serif;
+      font-variation-settings: 'wdth' 218, 'wght' 263, 'slnt' 78;
+      font-size: clamp(56px, 10vw, 180px);
+      font-weight: 500;
+      line-height: 1;
+      white-space: nowrap;
+      transition: font-variation-settings 400ms ease;
     }
 
-    @keyframes portfolio-slide {
-      from {
-        transform: translateX(-100vw);
-      }
-      to {
-        transform: translateX(100vw);
-      }
+    .portfolio:hover,
+    .portfolio:focus-visible {
+      font-variation-settings: 'wdth' 218, 'wght' 263, 'slnt' -80;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .portfolio {
-        animation: none;
-      }
+    .portfolio-hover-label {
+      display: none;
+    }
+
+    .portfolio:hover .portfolio-default-label,
+    .portfolio:focus-visible .portfolio-default-label {
+      display: none;
+    }
+
+    .portfolio:hover .portfolio-hover-label,
+    .portfolio:focus-visible .portfolio-hover-label {
+      display: inline;
     }
 
 
@@ -189,7 +247,7 @@
       content: "";
       position: absolute;
       height: 2px;
-      background: #aaa;
+      background: #faec9d;
       top: -30px;
       left: 10%;
       right: 10%;
@@ -200,13 +258,13 @@
     ========================= */
 
     .section {
-      background: white;
-      border: 2px solid #222;
+      background: transparent;
+      border: 2px solid #faec9d;
       border-radius: 12px;
       padding: 20px;
       min-height: 180px;
       position: relative;
-      color: #222;
+      color: #faec9d;
     }
 
     /* Section headings — H2 */
@@ -226,14 +284,14 @@
 
     .section li {
       padding: 7px 0;
-      color: #555;
+      color: #faec9d;
 
       /* Body typography */
       font-family: "Helvetica", Arial, sans-serif;
       font-size: 20px;
       font-weight: 300;
 
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid rgba(250, 236, 157, 0.45);
     }
 
     .section li:last-child {
@@ -244,13 +302,7 @@
        DESCRIPTION
     ========================= */
 
-    .description {
-      margin-top: 60px;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      border-left: 5px solid #222;
-    }
+    
 
     .description h2 {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -263,7 +315,7 @@
       font-family: "Helvetica", Arial, sans-serif;
       font-size: 20px;
       font-weight: 300;
-      color: #e29a9a;
+      color: #faec9d;
       opacity: 0.9;
       line-height: 1.2;
     }
@@ -295,9 +347,41 @@
       }
 
       .title {
-        font-size: var(--font-size-h1);
+        font-size: clamp(32px, 9vw, 60px);
       }
 
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 24px 18px;
+      }
+
+      .top-left-nav {
+        top: 16px;
+        left: 18px;
+        font-size: 14px;
+      }
+
+      .sitemap {
+        width: 100%;
+      }
+
+      .title {
+        margin-top: 70px;
+      }
+
+      .portfolio {
+        padding: 12px 0;
+        margin-top: 48px;
+        font-size: clamp(42px, 14vw, 90px);
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .description p {
+        font-size: 16px;
+      }
     }
 
   </style>
@@ -307,158 +391,28 @@
 
 <body>
 
-  <!-- PAGE TITLE -->
+  <div class="cursor-dot" aria-hidden="true"></div>
 
-  <h1 class="title">Hello, This is my Portfolio</h1>
-  <h2 class="subtitle">Taneli Major</h2>
-
-  <p class="subtitle">
-    Taneli Major
-    <a href="mailto:tmm34955@uga.edu">Email Me</a>
-    the University of Georgia
-  </p>
+  <nav class="top-left-nav" aria-label="Main navigation">
+    <a href="work.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="CONTACT.HTML">Contact</a>
+  </nav>
 
 
-  <div class="sitemap">
 
-    <!-- PORTFOLIO -->
-
-    <div class="portfolio">
-      PORTFOLIO
-    </div>
-
-
-    <!-- MAIN NAVIGATION -->
-
-    <div class="main-nav">
-
-
-      <!-- WORK -->
-
-      <div class="section">
-
-        <h2>01 Work</h2>
-
-        <ul>
-
-          <li>Brand Identity</li>
-          <li>Packaging Design</li>
-          <li>Graphic Systems</li>
-          <li>Environmental Design</li>
-          <li>Illustration</li>
-          <li>Digital Design</li>
-
-        </ul>
-
-      </div>
-
-
-      <!-- ABOUT -->
-
-      <div class="section">
-
-        <h2>02 About</h2>
-
-        <ul>
-
-          <li>
-            <a href="about.html">About Me</a>
-          </li>
-
-          <li>Design Experience</li>
-          <li>Experience</li>
-          <li>Education</li>
-          <li>Resume</li>
-
-        </ul>
-
-      </div>
-
-
-      <!-- PROJECTS -->
-
-      <div class="section">
-
-        <h2>03 Projects</h2>
-
-        <ul>
-
-          <li>Freelance Projects</li>
-          <li>Case Studies</li>
-          <li>Client Work</li>
-          <li>Student Work</li>
-          <li>Personal Projects</li>
-
-        </ul>
-
-      </div>
-
-
-      <!-- SERVICES -->
-
-      <div class="section">
-
-        <h2>04 Services</h2>
-
-        <ul>
-
-          <li>Branding</li>
-          <li>Print Design</li>
-          <li>Packaging</li>
-          <li>Outside of Design</li>
-          <li>Digital Design</li>
-
-        </ul>
-
-      </div>
-
-
-      <!-- CONTACT -->
-
-      <div class="section">
-
-        <h2>05 — Contact</h2>
-
-        <ul>
-
-          <li>Email</li>
-
-          <li>Instagram</li>
-
-          <li>
-            <a 
-              href="https://www.linkedin.com/in/taneli-major-ab483925a/" 
-              target="_blank">
-              LinkedIn
-            </a>
-          </li>
-
-          <li>Adobe Portfolio</li>
-          <li>Resume</li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <!-- DESCRIPTION -->
-
-    <div class="description">
-
-      <h2></h2>
-
-      <p>
-        My portfolio website can be used to navigate my different scopes of work. Hopefully with more time I can develop the different categories and add effects that make transitions from the homepage to different hyperlinks more efficient.
-      </p>
-
-    </div>
-
+  <!-- PORTFOLIO -->
+  <div class="portfolio" tabindex="0" aria-label="Taneli's">
+    <span class="portfolio-default-label">PORTFOLIO</span>
+    <span class="portfolio-hover-label">TANELI'S</span>
   </div>
-<style>/* sectiony */</style>
-</body>
+<script>
+  const cursorDot = document.querySelector('.cursor-dot');
 
-</div>
-</div>
+  window.addEventListener('pointermove', (event) => {
+    cursorDot.style.left = `${event.clientX}px`;
+    cursorDot.style.top = `${event.clientY}px`;
+  });
+</script>
+</body>
 </html>

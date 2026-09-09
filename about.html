@@ -9,40 +9,206 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Taneli</title>
-</head>
-<style> 
+  <link rel="stylesheet" href="https://use.typekit.net/yux0hjt.css">
+<style>
   body {
-    font-family: helvetica neue, Helvetica, sans-serif;
-    background: #faec9d;
-    color: #222;
     padding: 50px;
+    font-family: "pressato-variable", sans-serif;
+    font-variation-settings: 'wdth' 218, 'wght' 263, 'slnt' 78;
+    background-color: #faec9d;
   }
 
-  .moving-image {
-    display: circular;
-    max-width: 300px;
-    height: auto;
-    animation: travel-across-screen 10s linear infinite alternate;
+  .hover-text {
+    margin-top: -20px;
+    color: rgb(81, 57, 39);
+    font-size: clamp(3rem, 20vw, 25rem);
   }
 
-  @keyframes travel-across-screen {
-    from {
-      transform: translateX(0);
+  .home-button {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .hover-word {
+    display: inline-block;
+    font-variation-settings: 'wdth' 85, 'wght' 400, 'slnt' 100;
+    transition: font-size 400ms ease, font-variation-settings 400ms ease;
+  }
+
+  .hover-word:hover,
+  .hover-word:focus {
+    font-size: clamp(4rem, 30vw, 35rem);
+    font-variation-settings: 'wdth' 125, 'wght' 900, 'slnt' -80;
+  }
+  
+  .taneli-grid {
+    --section-line-color: rgb(115, 168, 221);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .taneli-info {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .taneli-info h3,
+  .taneli-info p {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .taneli-column {
+    padding: 20px 0;
+    border-top: 3px solid var(--section-line-color);
+    border-bottom: 3px solid var(--section-line-color);
+    color: rgb(81, 57, 39);
+  }
+
+  .taneli-rule {
+    display: none;
+  }
+
+  .taneli-column h3,
+  .taneli-column p {
+    margin: 0 0 10px;
+  }
+
+  .taneli-column p {
+    line-height: 1.6;
+  }
+
+  @media (max-width: 700px) {
+    body {
+      padding: 24px 18px;
     }
-    to {
-      transform: translateX(max(0px, calc(100vw - 400px)));
+
+    .home-button {
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .hover-text {
+      margin-top: -12px;
+      max-width: 100%;
+      font-size: clamp(2.75rem, 17vw, 7rem);
+      line-height: 0.95;
+      overflow-wrap: anywhere;
+    }
+
+    .taneli-info {
+      padding: 0;
+    }
+
+    .taneli-column {
+      padding: 16px 0;
+    }
+
+    .taneli-column h3 {
+      font-size: 18px;
+    }
+
+    .taneli-column p {
+      font-size: 15px;
+      line-height: 1.45;
     }
   }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 20px 14px;
+    }
+
+    .hover-text {
+      font-size: clamp(2.25rem, 15vw, 5rem);
+    }
+
+    .hover-word:hover,
+    .hover-word:focus {
+      font-size: clamp(2.75rem, 19vw, 6rem);
+    }
+
+    .taneli-grid {
+      gap: 20px;
+    }
+
+    .taneli-column h3 {
+      font-size: 16px;
+    }
+
+    .taneli-column p {
+      font-size: 14px;
+    }
+  }
+
 </style>
-<a style="color: #282a28; text-decoration: none;" href="index.html" class="home-button">Home</a> center
+ </head>
+<body>
+<a style="color: #282a28; text-decoration: none;" href="index.html" class="home-button">Home</a>
 
 
-<h1>ABOUT ME: <center>Taneli Major</center></h1>
-<a href="about.html" style="color: #282a28; text-decoration: underline;">About Me</a>
 
-<p style="color: rgb(81, 57, 39); font-size: 48px; font-family:'helvetica neue', 'helvetica', helvetica, 'Trebuchet MS', sans-serif">Hi, my name is Taneli Major. I am a graphic designer and design student at the University of Georgia. I have a passion for creating visually compelling designs that communicate effectively and leave a lasting impression. My work spans various design disciplines, including branding, packaging, digital design.</p>
-<img class="moving-image" src="assets/IMG_8698.jpg" alt="Image of Taneli Major" width="300" height="400" style="border-radius: 50%;" border="5px solid #222a28;">
+<p class="hover-text" style="font-family: 'pressato-variable', sans-serif"><span class="hover-word" tabindex="0">Hi,</span> <span class="hover-word" tabindex="0">my</span> <span class="hover-word" tabindex="0">name</span> <span class="hover-word" tabindex="0">is</span> <span class="hover-word" tabindex="0">Taneli.</span></p>
 
+<section class="info-section">
+
+    <section class="taneli-info">
+
+    <div class="taneli-grid">
+
+        <div class="taneli-column">
+            <div class="taneli-rule"></div>
+            <h3>Educational Background</h3>
+            <p>
+                Intended Bachelor of Graphic Design<br>
+                University of Georgia, Athens, GA
+            </p>
+        </div>
+
+        <div class="taneli-column">
+            <div class="taneli-rule"></div>
+            <h3>Clients</h3>
+            <p>
+                Good Days Cocktails,<br>
+                Kate Arnold Wine,<br>
+                United Distributors,<br>
+                Layton Design Studio,<br>
+                Marsh Atkinson &amp; Brantley LLC
+            </p>
+        </div>
+
+        <div class="taneli-column">
+            <div class="taneli-rule"></div>
+            <h3>Expertise</h3>
+            <p>
+                Digital Design<br>
+                Branding<br>
+                Photography<br>
+                Structural Design<br>
+                Print &amp; Packaging Design
+            </p>
+        </div>
+
+        <div class="taneli-column">
+            <div class="taneli-rule"></div>
+            <h3>Fun facts</h3>
+            <p>
+                I love welding<br>
+                Coffee enthusiast<br>
+                Huge fan of old Brazilian music<br>
+                Frequent Letterboxd lurker
+            </p>
+        </div>
+
+       
+    </div>
+
+    <div class="taneli-bottom-rule"></div>
+
+    <div class="taneli-copyright">
+        © TANELI MAJOR. All Rights Reserved.
+    </div>
+
+</section>
+</section>
 </body>
 </html>
 

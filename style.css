@@ -27,7 +27,7 @@ p::selection {
         justify-items: center;
         min-height: 100vh;
         display: grid;
-        grid-auto-columns: repeat(3fr,1fr);
+        grid-auto-columns: 1fr;
 column-gap: 2rem;
 row-gap: 2rem;
 /* 1fr = 1 fraction of the available space */
@@ -37,4 +37,747 @@ sectiony {
   margin: 70px 0;
     padding: 500px 0;
 }
-  
+  .main-nav h2 {
+    font-family: "passato-variable", sans-serif;
+  }
+ /* =========================================
+   BASIC SETUP
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #2a2525;
+  color: #f5f5f5;
+  font-family: helvetica, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 0 36px;
+
+  z-index: 10;
+}
+
+.logo {
+  justify-self: start;
+
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.4px;
+
+  transition: opacity 0.2s ease;
+}
+
+.nav {
+  grid-column: 2;
+
+  display: flex;
+  gap: 82px;
+
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.4px;
+}
+
+.nav a {
+  transition: opacity 0.2s ease;
+}
+
+.nav a:hover,
+.logo:hover {
+  opacity: 0.5;
+}
+
+
+/* =========================================
+   WORK CAROUSEL
+   ========================================= */
+
+.work-carousel {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #2f2b2b;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  animation: carousel-scroll 28s linear infinite;
+}
+
+.carousel-slide {
+  flex: 0 0 280px;
+  width: 280px;
+  height: 100%;
+  padding: 0 8px;
+  margin: 0;
+}
+
+.carousel-duplicate {
+  display: flex;
+  height: 100%;
+}
+
+@keyframes carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel-slide img,
+.carousel-slide video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.good-days-gallery {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #edd897 transparent;
+}
+
+.good-days-gallery img {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: contain;
+}
+
+
+/* =========================================
+   WORK LIST
+   ========================================= */
+
+.work-list {
+  width: calc(100% - 60px);
+  margin: 0 30px;
+
+  padding-top: 70px;
+  padding-bottom: 100px;
+
+  display: grid;
+  grid-template-columns: 1fr 20%;
+
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: -0.65px;
+  color: #edd897;
+}
+li {
+  list-style-position: inside;
+}
+.column-title {
+  margin: 0 0 6px;
+
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.35px;
+}
+
+
+/* PROJECTS */
+
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.project {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+
+  transition: opacity 0.2s ease;
+}
+
+.project:hover {
+  opacity: 0.5;
+}
+
+.project-name {
+  display: inline;
+}
+
+.project-description {
+  display: inline;
+}
+
+
+/* YEARS */
+
+.years {
+  display: flex;
+  flex-direction: column;
+}
+
+.years span {
+  line-height: 1.72;
+}
+
+.years span:not(:first-child) {
+  color: #f5f5f5;
+}
+
+
+/* =========================================
+   PLAY + CONTACT
+   ========================================= */
+
+.page-section {
+  min-height: 100vh;
+
+  padding: 120px 30px;
+
+  border-top: 1px solid #222;
+
+  font-size: 18px;
+}
+
+.page-section h2 {
+  margin: 0 0 30px;
+
+  font-size: 15px;
+  font-weight: 400;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .site-header {
+    height: 80px;
+    padding: 0 20px;
+  }
+
+  .logo,
+  .nav {
+    font-size: 13px;
+  }
+
+  .nav {
+    gap: 25px;
+  }
+
+  .work-carousel {
+    height: 190px;
+  }
+
+  .carousel-slide {
+    flex-basis: 190px;
+    width: 190px;
+  }
+
+  .work-list {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+
+    padding-top: 48px;
+
+    grid-template-columns: 1fr 70px;
+
+    font-size: 16px;
+  }
+
+  .work-label {
+    display: none;
+  }
+
+  .column-title {
+    font-size: 13px;
+  }
+
+  .project {
+    width: 100%;
+  }
+
+  .project-description {
+    display: block;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  .page-section {
+    padding: 100px 20px;
+  }
+}
+
+/* ================================
+   INFO GRID
+================================ */
+
+.info-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    /* THIS CREATES THE GRID LINES */
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+
+    margin-top: 120px;
+}
+
+
+/* INDIVIDUAL SECTIONS */
+
+.info-cell {
+    position: relative;
+
+    /* GRID LINES */
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+
+    /* SPACING INSIDE EACH BOX */
+    padding: 25px;
+
+    /* MAKES THE BOXES TALL */
+    min-height: 300px;
+
+    box-sizing: border-box;
+}
+
+
+/* SMALL TITLE */
+
+.info-label {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 10px;
+    font-weight: normal;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* LARGE TEXT */
+
+.info-content {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+
+/* LINKS */
+
+.info-content a {
+    color: black;
+    text-decoration: none;
+}
+
+.info-content a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================
+   SECOND ROW
+================================ */
+
+.info-cell:nth-child(4),
+.info-cell:nth-child(5),
+.info-cell:nth-child(6) {
+    min-height: 220px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media screen and (max-width: 900px) {
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media screen and (max-width: 600px) {
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        margin-top: 80px;
+    }
+
+    .info-cell {
+        min-height: 250px;
+        padding: 18px;
+    }
+
+    .info-content {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+
+        font-size: 16px;
+    }
+
+}
+/* =========================================
+   BOTTOM INFORMATION SECTION
+========================================= */
+
+.info-section {
+    width: 100%;
+    padding: 0 30px 25px 30px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   FIVE COLUMN LAYOUT
+========================================= */
+
+.info-columns {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    column-gap: 30px;
+}
+
+
+/* =========================================
+   INDIVIDUAL COLUMN
+========================================= */
+
+.info-column {
+    width: 100%;
+}
+
+
+/* =========================================
+   PINK LINE ABOVE EACH SECTION
+========================================= */
+
+.info-line {
+    width: 100%;
+    height: 3px;
+
+    background: #ff6b78;
+
+    margin-bottom: 13px;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.info-column h3 {
+    margin: 0 0 8px 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 18px;
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    color: #ff6b78;
+}
+
+
+/* =========================================
+   BODY TEXT
+========================================= */
+
+.info-column p {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11px;
+    line-height: 1.65;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   BOTTOM FULL-WIDTH LINE
+========================================= */
+
+.bottom-line {
+    width: 100%;
+    height: 3px;
+
+    background: #ff6b78;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   COPYRIGHT
+========================================= */
+
+.copyright {
+    width: 100%;
+
+    margin-top: 16px;
+
+    text-align: right;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+    line-height: 1;
+
+    color: #ff6b78;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .info-columns {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 30px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .info-section {
+        padding: 0 20px 20px 20px;
+    }
+
+    .info-columns {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+    }
+
+    .info-column h3 {
+        font-size: 17px;
+    }
+
+    .info-column p {
+        font-size: 11px;
+    }
+
+    .copyright {
+        text-align: left;
+        font-size: 11px;
+    }
+  }
+/* =========================================
+   taneli STYLE BOTTOM INFORMATION
+   ========================================= */
+
+.taneli-info {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 25px;
+
+    margin: 0;
+}
+
+
+/* FIVE EQUAL COLUMNS */
+
+.taneli-grid {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: grid !important;
+
+  grid-template-columns: 1fr !important;
+
+  row-gap: 30px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* EACH COLUMN */
+
+.taneli-column {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+  padding: 0 0 22px !important;
+
+  border-bottom: 3px solid rgb(115, 168, 221);
+
+    box-sizing: border-box;
+}
+
+
+/* Blue LINE */
+
+.taneli-rule {
+    width: 100% !important;
+    height: 3px !important;
+
+    margin: 0 0 13px 0 !important;
+    padding: 0 !important;
+
+    background: rgb(115, 168, 221);
+
+    box-sizing: border-box;
+}
+
+
+/* HEADINGS */
+
+.taneli-column h3 {
+    margin: 0 0 7px 0 !important;
+    padding: 0 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 18px !important;
+    line-height: 20px !important;
+
+    font-weight: 700 !important;
+
+    color: rgb(115, 168, 221);
+
+    text-align: left !important;
+}
+
+
+/* BODY */
+
+.taneli-column p {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 11px !important;
+    line-height: 24px !important;
+
+    font-weight: 400 !important;
+
+    color: white;
+
+    text-align: left !important;
+}
+
+
+/* BOTTOM LINE */
+
+.taneli-bottom-rule {
+    width: 100% !important;
+    height: 3px !important;
+
+    margin: 25px 0 0 0 !important;
+    padding: 0 !important;
+
+    background: rgb(115, 168, 221);
+
+    box-sizing: border-box;
+}
+
+
+/* COPYRIGHT */
+
+.taneli-copyright {
+    width: 100%;
+
+    margin: 16px 0 0 0 !important;
+    padding: 0 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 13px !important;
+    line-height: 15px !important;
+
+    color: rgb(115, 168, 221);
+
+    text-align: right !important;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .taneli-info {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .taneli-grid {
+        grid-template-columns: 1fr !important;
+        row-gap: 30px !important;
+    }
+
+    .taneli-copyright {
+        text-align: left !important;
+    }
+  }

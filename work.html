@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Work | Taneli Major</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">TANELI MAJOR</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="work-carousel" aria-label="Selected work">
+    <div class="carousel-track">
+      <figure class="carousel-slide">
+        <img src="assets/IMG_3672.jpg" alt="Selected work by Taneli Major">
+      </figure>
+      <figure class="carousel-slide">
+        <video src="assets/Comp 4.mp4" aria-label="Selected work by Taneli Major" autoplay muted loop playsinline></video>
+      </figure>
+      <figure class="carousel-slide">
+        <img src="assets/0B8E183A-F661-40AB-9E9C-409134D67433.JPG" alt="Selected work by Taneli Major">
+      </figure>
+      <figure class="carousel-slide">
+        <video src="assets/Pattern_TaneliMajor.mp4" aria-label="Selected work by Taneli Major" autoplay muted loop playsinline></video>
+      </figure>
+      <figure class="carousel-slide">
+          <img src="assets/IMG_2745.JPG" alt="Good Days project image 1">
+      </figure>
+      <div aria-hidden="true" class="carousel-duplicate">
+        <figure class="carousel-slide">
+          <img src="assets/LadybugCamp Designs-07.jpg" alt="">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/LadybugCamp Designs-06.jpg" alt="Selected work by Taneli Major" autoplay muted loop playsinline>
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/LadybugCamp Designs-05.jpg" alt="Selected work by Taneli Major">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/IMG_7089.JPG" alt="Selected work by Taneli Major">
+        </figure>
+        <figure class="carousel-slide">
+          <div class="good-days-gallery" aria-hidden="true">
+            <img src="assets/Good Days-Adjusted Labels 2.7_Sea Breeze 2.jpg" alt="">
+            <img src="assets/Good Days-Adjusted Labels 2.7_Gim Gimlet 1.jpg" alt="">
+            <img src="assets/Good Days-Adjusted Labels 2.7_Vodka RIta 2.jpg" alt="">
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <main class="work-list">
+    <div class="projects" aria-labelledby="work-heading">
+      <p class="column-title" id="work-heading">WORK</p>
+      <!-- Add new project links here. Add the matching year in .years below. -->
+        <a href="#" class="project">
+            <span class="project-name">Good Days Cocktails</span>
+            <span class="project-description"> | Graphic Design, Branding, Package Design
+            </span>
+        </a>
+        <a href="#" class="project">
+            <span class="project-name">PaperBag</span>
+            <span class="project-description">| Photography</span>
+        </a>
+        <a href="#" class="project">
+            <span class="project-name">Ladybug Camp</span>
+            <span class="project-description">| Graphic Design, Screen Print, Print &amp; Production</span>
+        </a>
+        <a href="#" class="project">
+            <span class="project-name">The New York Times</span>
+            <span class="project-description">| Graphic Design, Branding, Package Design</span>
+        </a>
+        <a href="#" class="project">
+            <span class="project-name">The New York Times</span>
+            <span class="project-description">| Graphic Design, Branding, Package Design</span>
+        </a>
+        <a href="#" class="project">
+            <span class="project-name">Gafi</span>
+            <span class="project-description">| Magazine Design, Industrial Design</span>
+        </a>
+    </div>
+
+    <div class="years" aria-label="Project years">
+      <span>YEAR</span>
+      <span>2025</span>
+      <span>2023</span>
+      <span>2026</span>
+      <span>YYYY</span>
+      <span>YYYY</span>
+      <span>2024</span>
+    </div>
+  </main>
+  <script>
+    document.querySelectorAll('.good-days-gallery').forEach((gallery) => {
+      setInterval(() => {
+        const nextPosition = gallery.scrollTop + gallery.clientHeight;
+        const lastImage = nextPosition >= gallery.scrollHeight - 2;
+
+        if (lastImage) {
+          gallery.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          gallery.scrollTo({ top: nextPosition, behavior: 'smooth' });
+        }
+      }, 3500);
+    });
+  </script>
+</body>
+</html>

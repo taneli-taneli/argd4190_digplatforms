@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Poster Generator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #d8d8d8;
+            color: #111;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* -------------------------
+           POSTER
+        ------------------------- */
+
+        .poster {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            aspect-ratio: 4 / 5;
+            margin: auto;
+            background: #eee9dc;
+            overflow: hidden;
+            border: 2px solid #111;
+        }
+
+        .title {
+            position: absolute;
+            left: 9%;
+            top: 9%;
+
+            font-size: 72px;
+            font-weight: 900;
+            line-height: .78;
+            letter-spacing: -5px;
+
+            z-index: 5;
+
+            white-space: pre-line;
+        }
+
+        .subtitle {
+            position: absolute;
+            left: 10%;
+            bottom: 7%;
+
+            font-size: 13px;
+            letter-spacing: 2px;
+
+            z-index: 5;
+        }
+
+        /* -------------------------
+           ALIEN
+        ------------------------- */
+
+        .alien {
+            position: absolute;
+
+            left: 50%;
+            top: 52%;
+
+            width: 55%;
+            aspect-ratio: 1 / 1;
+
+            transform:
+                translate(-50%, -50%)
+                rotate(0deg)
+                skew(0deg);
+
+            z-index: 3;
+        }
+
+        .head {
+            position: absolute;
+
+            inset: 8% 7%;
+
+            background: #111;
+
+            border-radius:
+                50% 50% 48% 48%
+                /
+                44% 44% 55% 55%;
+
+            transform: rotate(-3deg);
+        }
+
+        /* Alien forehead */
+
+        .head::before {
+            content: "";
+
+            position: absolute;
+
+            left: 8%;
+            right: 8%;
+            top: -8%;
+
+            height: 34%;
+
+            background: #111;
+
+            border-radius: 50% 50% 0 0;
+        }
+
+        /* Eyes */
+
+        .eye {
+            position: absolute;
+
+            width: 25%;
+            height: 42%;
+
+            background: #eee9dc;
+
+            border-radius: 55% 55% 50% 50%;
+
+            top: 29%;
+
+            transform: rotate(18deg);
+        }
+
+        .eye.left {
+            left: 20%;
+        }
+
+        .eye.right {
+            right: 20%;
+            transform: rotate(-18deg);
+        }
+
+        /* Pupils */
+
+        .pupil {
+            position: absolute;
+
+            width: 42%;
+            height: 62%;
+
+            background: #111;
+
+            border-radius: 50%;
+
+            left: 29%;
+            top: 19%;
+        }
+
+        /* Mouth */
+
+        .mouth {
+            position: absolute;
+
+            width: 28%;
+            height: 13%;
+
+            left: 36%;
+            bottom: 20%;
+
+            border-bottom: 5px solid #eee9dc;
+
+            border-radius: 0 0 50% 50%;
+        }
+
+        /* Antenna */
+
+        .antenna {
+            position: absolute;
+
+            width: 5%;
+            height: 20%;
+
+            background: #111;
+
+            left: 48%;
+            top: -7%;
+
+            transform:
+                rotate(-12deg);
+
+            transform-origin: bottom;
+        }
+
+        .antenna::after {
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            background: #111;
+
+            border-radius: 50%;
+
+            top: -10px;
+            left: 50%;
+
+            transform: translateX(-50%);
+        }
+
+        /* Decorative circles */
+
+        .orb {
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            border: 3px solid #111;
+            border-radius: 50%;
+
+            right: -12%;
+            top: 14%;
+        }
+
+        .orb2 {
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            border: 1px solid #777;
+            border-radius: 50%;
+
+            left: -22%;
+            bottom: 15%;
+        }
+
+        /* -------------------------
+           CONTROLS
+        ------------------------- */
+
+        .controls {
+            padding: 20px;
+
+            background: #f7f7f7;
+
+            border: 2px solid #111;
+        }
+
+        .controls h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .section {
+            border-top: 1px solid #bbb;
+
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-top: 12px;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+
+            padding: 9px;
+
+            border: 1px solid #888;
+
+            font-size: 14px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 35px;
+
+            border: 1px solid #888;
+        }
+
+        .value {
+            float: right;
+
+            font-weight: normal;
+            color: #666;
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 12px;
+
+            border: 2px solid #111;
+
+            background: #111;
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: white;
+            color: #111;
+        }
+
+        /* -------------------------
+           MOBILE
+        ------------------------- */
+
+        @media (max-width: 750px) {
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .poster {
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- =========================
+         POSTER
+    ========================== -->
+
+    <div>
+
+        <div class="poster" id="poster">
+
+            <!-- Decorative shapes -->
+
+            <div class="orb"></div>
+            <div class="orb2"></div>
+
+
+            <!-- Main title -->
+
+            <div class="title" id="title">
+                ALIEN
+                FROM
+                ANOTHER
+                WORLD
+            </div>
+
+
+            <!-- Alien -->
+
+            <div class="alien" id="alien">
+
+                <div class="antenna"></div>
+
+                <div class="head">
+
+                    <div class="eye left">
+                        <div class="pupil"></div>
+                    </div>
+
+                    <div class="eye right">
+                        <div class="pupil"></div>
+                    </div>
+
+                    <div class="mouth"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom text -->
+
+            <div class="subtitle">
+                UNKNOWN • 2026 • SIGNAL DETECTED
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CONTROLS
+    ========================== -->
+
+    <div class="controls">
+
+        <h2>Poster Controls</h2>
+
+
+        <!-- TEXT -->
+
+        <div class="section">
+
+            <h3>Text</h3>
+
+            <label>
+                Poster Text
+            </label>
+
+            <input
+                type="text"
+                id="textInput"
+                value="ALIEN FROM ANOTHER WORLD"
+            >
+
+
+            <label>
+                Text Size
+
+                <span
+                    class="value"
+                    id="textSizeValue">
+                    72px
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="textSize"
+                min="25"
+                max="110"
+                value="72"
+            >
+
+
+            <label>
+                Text X
+
+                <span
+                    class="value"
+                    id="textXValue">
+                    9%
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="textX"
+                min="0"
+                max="80"
+                value="9"
+            >
+
+
+            <label>
+                Text Y
+
+                <span
+                    class="value"
+                    id="textYValue">
+                    9%
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="textY"
+                min="0"
+                max="80"
+                value="9"
+            >
+
+
+            <label>
+                Text Skew
+
+                <span
+                    class="value"
+                    id="textSkewValue">
+                    0°
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="textSkew"
+                min="-30"
+                max="30"
+                value="0"
+            >
+
+        </div>
+
+
+        <!-- ALIEN -->
+
+        <div class="section">
+
+            <h3>Alien Face</h3>
+
+
+            <label>
+                Size
+
+                <span
+                    class="value"
+                    id="alienSizeValue">
+                    55%
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="alienSize"
+                min="20"
+                max="100"
+                value="55"
+            >
+
+
+            <label>
+                X Position
+
+                <span
+                    class="value"
+                    id="alienXValue">
+                    50%
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="alienX"
+                min="0"
+                max="100"
+                value="50"
+            >
+
+
+            <label>
+                Y Position
+
+                <span
+                    class="value"
+                    id="alienYValue">
+                    52%
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="alienY"
+                min="0"
+                max="100"
+                value="52"
+            >
+
+
+            <label>
+                Rotation
+
+                <span
+                    class="value"
+                    id="alienRotationValue">
+                    0°
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="alienRotation"
+                min="-180"
+                max="180"
+                value="0"
+            >
+
+
+            <label>
+                Skew
+
+                <span
+                    class="value"
+                    id="alienSkewValue">
+                    0°
+                </span>
+
+            </label>
+
+            <input
+                type="range"
+                id="alienSkew"
+                min="-30"
+                max="30"
+                value="0"
+            >
+
+
+            <label>
+                Alien Color
+            </label>
+
+            <input
+                type="color"
+                id="alienColor"
+                value="#111111"
+            >
+
+
+            <label>
+                Eye Color
+            </label>
+
+            <input
+                type="color"
+                id="eyeColor"
+                value="#eee9dc"
+            >
+
+        </div>
+
+
+        <!-- BACKGROUND -->
+
+        <div class="section">
+
+            <h3>Background</h3>
+
+            <label>
+                Background Color
+            </label>
+
+            <input
+                type="color"
+                id="backgroundColor"
+                value="#eee9dc"
+            >
+
+        </div>
+
+
+        <!-- RESET -->
+
+        <button id="resetButton">
+            RESET POSTER
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+/*
+    ========================================
+    SELECT ELEMENTS
+    ========================================
+*/
+
+const poster = document.getElementById("poster");
+
+const title = document.getElementById("title");
+
+const alien = document.getElementById("alien");
+
+const alienHead = document.querySelector(".head");
+
+const antenna = document.querySelector(".antenna");
+
+const pupils = document.querySelectorAll(".pupil");
+
+const eyes = document.querySelectorAll(".eye");
+
+const mouth = document.querySelector(".mouth");
+
+
+/*
+    ========================================
+    REUSABLE FUNCTION:
+    UPDATE TEXT
+    ========================================
+*/
+
+function updateText() {
+
+    const text =
+        document.getElementById("textInput").value;
+
+    const size =
+        document.getElementById("textSize").value;
+
+    const x =
+        document.getElementById("textX").value;
+
+    const y =
+        document.getElementById("textY").value;
+
+    const skew =
+        document.getElementById("textSkew").value;
+
+
+    /*
+        Change the text
+    */
+
+    title.textContent =
+        text.replace(/\s+/g, "\n");
+
+
+    /*
+        Change text size
+    */
+
+    title.style.fontSize =
+        size + "px";
+
+
+    /*
+        Change X position
+    */
+
+    title.style.left =
+        x + "%";
+
+
+    /*
+        Change Y position
+    */
+
+    title.style.top =
+        y + "%";
+
+
+    /*
+        Change skew
+    */
+
+    title.style.transform =
+        "skew(" + skew + "deg)";
+
+
+    /*
+        Update numbers shown
+        next to sliders
+    */
+
+    document.getElementById("textSizeValue")
+        .textContent = size + "px";
+
+    document.getElementById("textXValue")
+        .textContent = x + "%";
+
+    document.getElementById("textYValue")
+        .textContent = y + "%";
+
+    document.getElementById("textSkewValue")
+        .textContent = skew + "°";
+}
+
+
+/*
+    ========================================
+    REUSABLE FUNCTION:
+    UPDATE ALIEN
+    ========================================
+*/
+
+function updateAlien() {
+
+    const size =
+        document.getElementById("alienSize").value;
+
+    const x =
+        document.getElementById("alienX").value;
+
+    const y =
+        document.getElementById("alienY").value;
+
+    const rotation =
+        document.getElementById("alienRotation").value;
+
+    const skew =
+        document.getElementById("alienSkew").value;
+
+
+    /*
+        Change alien size
+    */
+
+    alien.style.width =
+        size + "%";
+
+
+    /*
+        Change alien position
+    */
+
+    alien.style.left =
+        x + "%";
+
+    alien.style.top =
+        y + "%";
+
+
+    /*
+        Change rotation and skew
+    */
+
+    alien.style.transform =
+        "translate(-50%, -50%) " +
+        "rotate(" + rotation + "deg) " +
+        "skew(" + skew + "deg)";
+
+
+    /*
+        Update slider values
+    */
+
+    document.getElementById("alienSizeValue")
+        .textContent = size + "%";
+
+    document.getElementById("alienXValue")
+        .textContent = x + "%";
+
+    document.getElementById("alienYValue")
+        .textContent = y + "%";
+
+    document.getElementById("alienRotationValue")
+        .textContent = rotation + "°";
+
+    document.getElementById("alienSkewValue")
+        .textContent = skew + "°";
+}
+
+
+/*
+    ========================================
+    REUSABLE FUNCTION:
+    UPDATE COLORS
+    ========================================
+*/
+
+function updateColors() {
+
+    const alienColor =
+        document.getElementById("alienColor").value;
+
+    const eyeColor =
+        document.getElementById("eyeColor").value;
+
+
+    /*
+        Change alien color
+    */
+
+    alienHead.style.background =
+        alienColor;
+
+    antenna.style.background =
+        alienColor;
+
+
+    /*
+        Change pupils
+    */
+
+    pupils.forEach(function(pupil) {
+
+        pupil.style.background =
+            alienColor;
+
+    });
+
+
+    /*
+        Change eye color
+    */
+
+    eyes.forEach(function(eye) {
+
+        eye.style.background =
+            eyeColor;
+
+    });
+
+
+    /*
+        Change mouth color
+    */
+
+    mouth.style.borderBottomColor =
+        eyeColor;
+}
+
+
+/*
+    ========================================
+    REUSABLE FUNCTION:
+    UPDATE BACKGROUND
+    ========================================
+*/
+
+function updateBackground() {
+
+    const color =
+        document.getElementById("backgroundColor").value;
+
+    poster.style.background =
+        color;
+}
+
+
+/*
+    ========================================
+    EVENT LISTENERS
+    ========================================
+*/
+
+
+/*
+    Text controls
+*/
+
+document
+    .getElementById("textInput")
+    .addEventListener("input", updateText);
+
+document
+    .getElementById("textSize")
+    .addEventListener("input", updateText);
+
+document
+    .getElementById("textX")
+    .addEventListener("input", updateText);
+
+document
+    .getElementById("textY")
+    .addEventListener("input", updateText);
+
+document
+    .getElementById("textSkew")
+    .addEventListener("input", updateText);
+
+
+/*
+    Alien controls
+*/
+
+document
+    .getElementById("alienSize")
+    .addEventListener("input", updateAlien);
+
+document
+    .getElementById("alienX")
+    .addEventListener("input", updateAlien);
+
+document
+    .getElementById("alienY")
+    .addEventListener("input", updateAlien);
+
+document
+    .getElementById("alienRotation")
+    .addEventListener("input", updateAlien);
+
+document
+    .getElementById("alienSkew")
+    .addEventListener("input", updateAlien);
+
+
+/*
+    Color controls
+*/
+
+document
+    .getElementById("alienColor")
+    .addEventListener("input", updateColors);
+
+document
+    .getElementById("eyeColor")
+    .addEventListener("input", updateColors);
+
+
+/*
+    Background
+*/
+
+document
+    .getElementById("backgroundColor")
+    .addEventListener("input", updateBackground);
+
+
+/*
+    ========================================
+    RESET FUNCTION
+    ========================================
+*/
+
+function resetPoster() {
+
+    document.getElementById("textInput").value =
+        "ALIEN FROM ANOTHER WORLD";
+
+    document.getElementById("textSize").value =
+        72;
+
+    document.getElementById("textX").value =
+        9;
+
+    document.getElementById("textY").value =
+        9;
+
+    document.getElementById("textSkew").value =
+        0;
+
+
+    document.getElementById("alienSize").value =
+        55;
+
+    document.getElementById("alienX").value =
+        50;
+
+    document.getElementById("alienY").value =
+        52;
+
+    document.getElementById("alienRotation").value =
+        0;
+
+    document.getElementById("alienSkew").value =
+        0;
+
+
+    document.getElementById("alienColor").value =
+        "#111111";
+
+    document.getElementById("eyeColor").value =
+        "#eee9dc";
+
+    document.getElementById("backgroundColor").value =
+        "#eee9dc";
+
+
+    /*
+        Re-run all functions
+        after resetting
+    */
+
+    updateText();
+
+    updateAlien();
+
+    updateColors();
+
+    updateBackground();
+}
+
+
+/*
+    Connect reset button
+*/
+
+document
+    .getElementById("resetButton")
+    .addEventListener("click", resetPoster);
+
+
+/*
+    ========================================
+    INITIALIZE
+    ========================================
+*/
+
+updateText();
+
+updateAlien();
+
+updateColors();
+
+updateBackground();
+
+</script>
+
+</body>
+</html>
